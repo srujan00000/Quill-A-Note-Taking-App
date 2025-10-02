@@ -35,8 +35,7 @@ To run this project on your local machine, follow these steps:
 1.  **Clone the Repository**
 
     ```bash
-    git clone [https://github.com/srujan00000/Quill-A-Note-Taking-App.git](https://github.com/srujan00000/Quill-A-Note-Taking-App.git)
-    cd YOUR_REPOSITORY_NAME
+    git clone https://github.com/srujan00000/Quill-A-Note-Taking-App.git cd YOUR_REPOSITORY_NAME
     ```
 
 2.  **Install Dependencies**
