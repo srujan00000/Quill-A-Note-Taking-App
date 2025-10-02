@@ -21,7 +21,7 @@ Quill is a feature-rich, responsive note-taking application inspired by Google K
 
 ## Tech Stack
 
-- **Frontend:** Angular (with Standalone Components and new `@for` syntax)
+- **Frontend:** Angular (with Standalone Components)
 - **Styling:** SCSS with modern CSS Grid for layout
 - **Backend & Database:** Firebase (Authentication and Firestore for real-time data)
 - **Deployment:** Firebase Hosting
