@@ -1,0 +1,53 @@
+@if (notes$ | async; as notes) {
+
+<div class="trash-header">
+    <p>Notes deleted from trash cannot be recovered</p>
+    <!-- The button is disabled if there are no notes in the trash -->
+    <button class="empty-trash-button" (click)="promptEmptyTrash()" [disabled]="notes.length === 0">
+        Empty Trash
+    </button>
+</div>
+
+@if (notes.length > 0) {
+<div class="notes-grid">
+    @for (note of notes; track note.id) {
+    <app-note-card [note]="note" (restore)="restoreNote($event)" (deletePermanently)="deleteNotePermanently($event)"
+        (edit)="openEditModal($event)">
+    </app-note-card>
+    }
+</div>
+} @else {
+<div class="empty-state">
+    <span class="material-icons-outlined empty-icon">delete</span>
+    <p>No notes in trash</p>
+</div>
+}
+}
+
+<!-- === CONFIRMATION MODAL === -->
+@if (showConfirmationModal) {
+<div class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-container" (click)="$event.stopPropagation()">
+
+        <!-- Show different content based on what we're deleting -->
+        @if (noteIdToDelete) {
+        <h2 class="modal-title">Delete note forever?</h2>
+        <p class="modal-message">This action cannot be undone.</p>
+        } @else {
+        <h2 class="modal-title">Empty trash?</h2>
+        <p class="modal-message">All notes in the trash will be permanently deleted. This action cannot be undone.</p>
+        }
+
+        <div class="modal-actions">
+            <button class="modal-button cancel" (click)="closeModal()">Cancel</button>
+            <button class="modal-button delete" (click)="confirmDeleteAction()">Delete</button>
+        </div>
+    </div>
+</div>
+}
+
+@if (selectedNote) {
+<app-edit-note-modal [note]="selectedNote" (closeModal)="closeEditModal()" (restore)="restoreNote($event)"
+    (deletePermanently)="deleteNotePermanently($event)">
+</app-edit-note-modal>
+}

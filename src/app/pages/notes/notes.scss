@@ -1,0 +1,40 @@
+
+
+.notes-grid {
+  /* 1. Define the container as a grid */
+  display: grid;
+
+  /* 2. Define the columns */
+  // This is a powerful responsive rule:
+  // - It creates as many columns as can fit.
+  // - Each column will be a minimum of 250px wide.
+  // - They will all grow equally to fill the available space.
+  // On most desktop screens, this will naturally result in 4 columns.
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+  /* 3. Define the spacing */
+  // This adds a 1rem gap between all items, both vertically and horizontally.
+  gap: 1rem;
+}
+
+/* The empty-state styling remains exactly the same */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.empty-icon {
+  font-size: 8rem;
+  width: 1em;
+  height: 1em;
+}
+
+.empty-state p {
+  font-size: 1.25rem;
+  font-weight: 500;
+}

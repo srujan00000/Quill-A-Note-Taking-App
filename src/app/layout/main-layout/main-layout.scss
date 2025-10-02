@@ -1,0 +1,39 @@
+
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.sidenav {
+  width: 245px;
+
+  background-color: var(--background-primary); 
+
+  
+  border-right: 1px solid var(--border-color); 
+
+  padding: 1rem;
+  transition: width 0.3s ease-in-out;
+
+  position: relative;
+  z-index: 20;
+}
+
+.sidenav.collapsed {
+  width: 55px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  background-color: var(--background-secondary);
+}

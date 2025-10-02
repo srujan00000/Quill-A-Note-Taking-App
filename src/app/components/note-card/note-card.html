@@ -1,0 +1,43 @@
+<div class="note-card-container" (click)="edit.emit(note)">
+    <div class="note-content">
+        @if (note.title) {
+        <h3 class="note-title">{{ note.title }}</h3>
+        }
+        @if (note.content) {
+        <p class="note-body">{{ note.content }}</p>
+        }
+    </div>
+
+    <div class="note-actions" (click)="$event.stopPropagation()">
+
+
+
+        <!-- 1. First, check if the note is in the trash. This has the highest priority. -->
+        @if (note.isTrashed) {
+        <button class="icon-button" title="Delete forever" (click)="deletePermanently.emit(note.id)">
+            <span class="material-icons-outlined">delete_forever</span>
+        </button>
+        <button class="icon-button" title="Restore" (click)="restore.emit(note.id)">
+            <span class="material-icons-outlined">restore_from_trash</span>
+        </button>
+        } @else {
+        <!-- 2. If it's NOT trashed, then check if it's archived. -->
+        @if (note.isArchived) {
+        <button class="icon-button" title="Unarchive" (click)="unarchive.emit(note.id)">
+            <span class="material-icons-outlined">unarchive</span>
+        </button>
+        } @else {
+        <!-- 3. If it's NOT trashed and NOT archived, it must be an active note. -->
+        <button class="icon-button" title="Archive" (click)="archive.emit(note.id)">
+            <span class="material-icons-outlined">archive</span>
+        </button>
+        }
+
+        <!-- The regular trash button appears for both active and archived notes. -->
+        <button class="icon-button" title="Move to trash" (click)="trash.emit(note.id)">
+            <span class="material-icons-outlined">delete</span>
+        </button>
+        }
+
+    </div>
+</div>

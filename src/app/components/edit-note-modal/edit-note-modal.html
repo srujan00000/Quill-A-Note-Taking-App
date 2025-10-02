@@ -1,0 +1,46 @@
+<div class="modal-backdrop" (click)="closeWithoutSaving()"></div>
+
+<div class="modal-container" (click)="$event.stopPropagation()">
+    <div class="note-form">
+        <input type="text" placeholder="Title" class="note-title-input" [(ngModel)]="editableNote.title">
+
+        <textarea placeholder="Take a note..." class="note-content-textarea"
+            [(ngModel)]="editableNote.content"></textarea>
+
+
+        <div class="form-actions">
+            <div class="action-buttons">
+
+
+
+                <!-- 1. First, check if the note is in the trash. -->
+                @if (note.isTrashed) {
+                <button class="icon-button" title="Delete forever" (click)="onDeletePermanently()">
+                    <span class="material-icons-outlined">delete_forever</span>
+                </button>
+                <button class="icon-button" title="Restore" (click)="onRestore()">
+                    <span class="material-icons-outlined">restore_from_trash</span>
+                </button>
+                } @else {
+                <!-- 2. If not trashed, check if it's archived. -->
+                @if (note.isArchived) {
+                <button class="icon-button" title="Unarchive" (click)="onUnarchive()">
+                    <span class="material-icons-outlined">unarchive</span>
+                </button>
+                } @else {
+                <!-- 3. If not trashed and not archived, it's an active note. -->
+                <button class="icon-button" title="Archive" (click)="onArchive()">
+                    <span class="material-icons-outlined">archive</span>
+                </button>
+                }
+
+                <!-- The regular trash button for active/archived notes. -->
+                <button class="icon-button" title="Move to trash" (click)="onTrash()">
+                    <span class="material-icons-outlined">delete</span>
+                </button>
+                }
+            </div>
+            <button class="close-button" (click)="saveAndClose()">Close</button>
+        </div>
+    </div>
+</div>

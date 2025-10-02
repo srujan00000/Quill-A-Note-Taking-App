@@ -1,0 +1,22 @@
+@if (notes$ | async; as notes) {
+@if (notes.length > 0) {
+<div class="notes-grid">
+    @for (note of notes; track note.id) {
+    <app-note-card [note]="note" (archive)="archiveNote($event)" (trash)="trashNote($event)"
+        (edit)="openEditModal($event)"> >
+    </app-note-card>
+    }
+</div>
+} @else {
+<div class="empty-state">
+    <span class="material-icons-outlined empty-icon">notifications</span>
+    <p>Notes with upcoming reminders appear here</p>
+</div>
+}
+}
+
+@if (selectedNote) {
+<app-edit-note-modal [note]="selectedNote" (closeModal)="closeEditModal()" (archive)="archiveNote($event)"
+    (trash)="trashNote($event)">
+</app-edit-note-modal>
+}

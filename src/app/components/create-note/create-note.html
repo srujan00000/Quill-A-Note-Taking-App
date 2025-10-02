@@ -1,0 +1,52 @@
+@if (isActive) {
+<!-- ACTIVE STATE -->
+<div class="click-away-backdrop" (click)="saveNote()"></div>
+
+<div class="create-note-container active">
+    <div class="note-form">
+        <input #titleInput type="text" placeholder="Title" class="note-title-input" [(ngModel)]="noteTitle">
+
+        <textarea #textarea placeholder="Take a note..." class="note-content-textarea" [(ngModel)]="noteContent"
+            (input)="autoResizeTextarea()"></textarea>
+
+        @if (reminderDate) {
+        <div class="reminder-chip">
+            <span class="material-icons-outlined">watch_later</span>
+            <span>{{ reminderDate | date:'short' }}</span>
+            <button class="clear-reminder-button" (click)="clearReminder()">
+                <span class="material-icons-outlined">close</span>
+            </button>
+        </div>
+        }
+
+        <div class="form-actions">
+            <div class="action-buttons">
+
+                <button class="icon-button" title="Add reminder" (click)="openDatePicker()">
+                    <span class="material-icons-outlined">add_alert</span>
+                </button>
+
+                <button class="icon-button" title="Archive" (click)="archiveNote()">
+                    <span class="material-icons-outlined">archive</span>
+                </button>
+                <button class="icon-button" title="Move to trash" (click)="trashNote()">
+                    <span class="material-icons-outlined">delete</span>
+                </button>
+            </div>
+            <button class="close-button" (click)="saveNote()">Close</button>
+        </div>
+    </div>
+
+
+    <input #dateInput id="reminder-date-input" type="datetime-local" class="hidden-date-input"
+        (change)="setReminder($event)">
+</div>
+
+} @else {
+<!-- INACTIVE STATE -->
+<div class="create-note-container" (click)="activateForm()">
+    <div class="placeholder">
+        <span>Take a note...</span>
+    </div>
+</div>
+}

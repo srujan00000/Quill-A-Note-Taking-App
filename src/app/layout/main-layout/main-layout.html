@@ -1,0 +1,17 @@
+<!-- The header is now at the top level, outside the main container -->
+<app-header [isDarkMode]="isDarkMode" (sidenavToggled)="toggleSidenav()" (themeToggled)="toggleTheme()">
+</app-header>
+
+<!-- This container holds the sidenav and content area -->
+<div class="main-container">
+
+    <!-- We add a class that will change when the sidenav is collapsed -->
+    <app-sidenav class="sidenav" [class.collapsed]="isSidenavCollapsed" (mouseenter)="onSidenavHover(true)"
+        (mouseleave)="onSidenavHover(false)">
+    </app-sidenav>
+
+    <main class="content">
+        <router-outlet></router-outlet>
+    </main>
+
+</div>

@@ -1,0 +1,42 @@
+/* src/styles.scss */
+
+/* Import Google Fonts and Icons */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Outlined');
+
+/* Define CSS variables for our color themes.
+  :root contains the default (light theme) variables.
+*/
+:root {
+  --background-primary: #ffffff; /* White background for pages */
+  --background-secondary: #f1f5f9; /* Light gray for backgrounds */
+  --text-primary: #1e293b; /* Dark text */
+  --text-secondary: #64748b; /* Gray text */
+  --border-color: #e2e8f0; /* Light border */
+  --accent-color: #3b82f6; /* Blue for focus rings, buttons */
+  --icon-button-hover: #f1f5f9;
+}
+
+/* When the body has the 'dark-theme' class, these variables will be used instead.
+*/
+.dark-theme {
+  --background-primary: #1e293b; /* Dark background */
+  --background-secondary: #334155; /* Slightly lighter dark */
+  --text-primary: #f1f5f9; /* Light text */
+  --text-secondary: #94a3b8; /* Lighter gray text */
+  --border-color: #475569; /* Darker border */
+  --accent-color: #60a5fa; /* Lighter blue */
+  --icon-button-hover: #475569;
+}
+
+/* Basic CSS Resets */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  
+  /* Use the variables */
+  background-color: var(--background-secondary);
+  color: var(--text-primary);
+}

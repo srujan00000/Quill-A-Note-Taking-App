@@ -1,0 +1,18 @@
+<div class="sidenav-container">
+    <ul class="nav-list">
+        @for (item of navItems; track item.name) {
+        <li class="nav-item">
+            <a [routerLink]="['/', item.name.toLowerCase()]" routerLinkActive="active-link" class="nav-link">
+                <span class="material-icons-outlined nav-icon">{{ item.icon }}</span>
+                <span class="nav-text">{{ item.name }}</span>
+            </a>
+        </li>
+        }
+    </ul>
+
+
+    <button class="nav-link logout-button" (click)="logout()">
+        <span class="material-icons-outlined nav-icon">logout</span>
+        <span class="nav-text">Logout</span>
+    </button>
+</div>

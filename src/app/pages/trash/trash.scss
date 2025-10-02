@@ -1,0 +1,130 @@
+
+
+/* --- Page Layout --- */
+/* We are now using the same grid system as the Notes and Archive pages for consistency */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+/* --- Trash Header Styling --- */
+/* This positions the text and button correctly at the top of the page */
+.trash-header {
+  text-align: center;
+  padding: 1rem 0 2.5rem 0;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  
+  p {
+    margin: 0;
+  }
+}
+
+.empty-trash-button {
+  border: none;
+  background: none;
+  color: var(--accent-color);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.25rem; // Minimal padding for a link-like feel
+  margin-left: 0.75rem; // Space from the text
+
+  &:disabled {
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+/* --- Empty State Styling --- */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 8rem;
+  color: var(--text-secondary);
+  opacity: 0.6;
+
+  .empty-icon {
+    font-size: 8rem;
+    width: 1em;
+    height: 1em;
+  }
+  p {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+}
+
+/* --- Confirmation Modal Styling (The Popup Dialog) --- */
+.modal-backdrop {
+  position: fixed; // Covers the entire screen
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); // Semi-transparent black background
+  display: flex; // Use flexbox to center the modal
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; // Ensures it's on top of everything else
+}
+
+.modal-container {
+  background-color: var(--background-primary);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 90%; // Responsive width
+  max-width: 450px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: var(--text-primary);
+}
+
+.modal-message {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 2rem 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.modal-button {
+  border: none;
+  background: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+
+  &.cancel {
+    color: var(--text-primary);
+    &:hover {
+      background-color: var(--icon-button-hover);
+    }
+  }
+
+  &.delete {
+    background-color: #ef4444; // Red for the destructive action
+    color: white;
+    &:hover {
+      background-color: #dc2626; // Darker red on hover
+    }
+  }
+}

@@ -1,0 +1,91 @@
+
+
+// The :host selector styles the <app-sidenav> element itself.
+:host {
+  display: block; // Make the component a block-level element.
+  padding: 1rem;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; // Space between items.
+}
+
+.nav-item {
+  width: 100%;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  border-radius: 28px; // Pill shape.
+  padding: 0 1.5rem;
+  gap: 1.5rem; // Space between icon and text.
+  
+  color: var(--text-primary);
+  text-decoration: none;
+  
+  transition: background-color 0.2s ease-in-out;
+  overflow: hidden; // This is key to hiding the text smoothly.
+
+  &:hover {
+    background-color: var(--icon-button-hover);
+  }
+}
+
+.nav-icon {
+  font-size: 1.75rem;
+  color: var(--text-secondary);
+}
+
+.nav-text {
+  font-size: 1rem;
+  font-weight: 500;
+  white-space: nowrap; // Prevent text from wrapping.
+}
+
+// When the host element has the .collapsed class...
+:host(.collapsed) {
+  .nav-text {
+    display: none; // Hide the text.
+  }
+  .nav-link {
+    justify-content: center; // Center the icon.
+    padding: 0;
+  }
+}
+
+// This new container will use flexbox to push the logout button to the bottom.
+.sidenav-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.nav-list {
+  flex-grow: 1; // This makes the list take up all available space, pushing the button down.
+}
+
+// Style the logout button to look like a nav link but behave as a button.
+.logout-button {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  text-align: left;
+}
+
+
+.nav-link.active-link {
+  background-color: var(--accent-color);
+  color: white;
+
+  .nav-icon, .nav-text {
+    color: white;
+  }
+}

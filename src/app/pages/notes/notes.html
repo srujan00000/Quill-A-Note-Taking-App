@@ -1,0 +1,33 @@
+<!-- The note creation component stays at the top -->
+<app-create-note></app-create-note>
+
+<!-- 
+  We use `@if` with the `async` pipe.
+  This unwraps the `notes$` observable into a `notes` array we can use.
+-->
+@if (notes$ | async; as notes) {
+
+<!-- If there are notes, show the grid -->
+@if (notes.length > 0) {
+<div class="notes-grid">
+  @for (note of notes; track note.id) {
+  <app-note-card [note]="note" (archive)="archiveNote($event)" (trash)="trashNote($event)"
+    (edit)="openEditModal($event)">
+  </app-note-card>
+  }
+</div>
+} @else {
+<!-- If there are no notes, show a helpful placeholder -->
+<div class="empty-state">
+  <span class="material-icons-outlined empty-icon">lightbulb</span>
+  <p>Notes you add appear here</p>
+</div>
+}
+}
+
+<!-- It will only be rendered if a note is selected -->
+@if (selectedNote) {
+<app-edit-note-modal [note]="selectedNote" (closeModal)="closeEditModal()" (archive)="archiveNote($event)"
+  (trash)="trashNote($event)">
+</app-edit-note-modal>
+}

@@ -1,0 +1,37 @@
+/* src/app/app.component.scss */
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.sidenav {
+  width: 256px;
+  // BEFORE: background-color: #ffffff;
+  background-color: var(--background-primary); // AFTER: Use the theme variable.
+
+  // BEFORE: border-right: 1px solid #e2e8f0;
+  border-right: 1px solid var(--border-color); // AFTER: Use the theme variable.
+
+  padding: 1rem;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidenav.collapsed {
+  width: 80px;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+  // ADD THIS LINE: Explicitly set the background for the content area.
+  background-color: var(--background-secondary);
+}

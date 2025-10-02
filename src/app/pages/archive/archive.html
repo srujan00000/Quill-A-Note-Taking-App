@@ -1,0 +1,26 @@
+<!-- We use the same async pipe pattern as the Notes page -->
+@if (notes$ | async; as notes) {
+
+<!-- If there are archived notes, show the grid -->
+@if (notes.length > 0) {
+<div class="notes-grid">
+    @for (note of notes; track note.id) {
+    <app-note-card [note]="note" (unarchive)="unarchiveNote($event)" (trash)="trashNote($event)"
+        (edit)="openEditModal($event)"> >
+    </app-note-card>
+    }
+</div>
+} @else {
+<!-- If the archive is empty, show a different placeholder -->
+<div class="empty-state">
+    <span class="material-icons-outlined empty-icon">archive</span>
+    <p>Your archived notes appear here</p>
+</div>
+}
+}
+
+@if (selectedNote) {
+<app-edit-note-modal [note]="selectedNote" (closeModal)="closeEditModal()" (unarchive)="unarchiveNote($event)"
+    (trash)="trashNote($event)">
+</app-edit-note-modal>
+}

@@ -1,0 +1,32 @@
+<div class="header-container">
+    <!-- Left Section: Menu, Logo, and App Name -->
+    <div class="header-left">
+        <button class="icon-button" (click)="onToggleSidenav()">
+            <span class="material-icons-outlined">menu</span>
+        </button>
+        <div class="app-logo">
+            <span class="material-icons-outlined app-icon">edit</span>
+            <span class="app-name">Quill</span>
+        </div>
+    </div>
+
+    <!-- Center Section: Search Bar -->
+    <div class="header-center">
+        <div class="search-bar">
+            <span class="material-icons-outlined search-icon">search</span>
+            <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="onSearchChange()">
+        </div>
+    </div>
+
+    <!-- Right Section: Theme Toggle -->
+    <div class="header-right">
+        <button class="icon-button" (click)="onToggleTheme()">
+            @if(!isDarkMode){
+            <span class="material-icons-outlined">dark_mode</span>
+            }
+            @else{
+            <span class="material-icons-outlined">light_mode</span>
+            }
+        </button>
+    </div>
+</div>
