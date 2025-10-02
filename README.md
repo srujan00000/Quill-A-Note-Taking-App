@@ -36,7 +36,7 @@ To run this project on your local machine, follow these steps:
 
     ```bash
     git clone https://github.com/ram/quill-a-note-taking-App.git
-    cd quill-a-note-taking-App   # or whatever the actual folder name is after cloning
+    cd quill-a-note-taking-App   
 
     ```
 
